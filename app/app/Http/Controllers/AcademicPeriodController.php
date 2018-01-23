@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\AcademicPeriod;
 use Illuminate\Http\Request;
+use Session;
+use Illuminate\Support\Facades\DB;
 
 class AcademicPeriodController extends Controller
 {
@@ -14,7 +16,7 @@ class AcademicPeriodController extends Controller
      */
     public function index()
     {
-        //
+        return view('periodo_academico.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class AcademicPeriodController extends Controller
      */
     public function create()
     {
-        //
+        return view('periodo_academico.create');
     }
 
     /**
@@ -35,7 +37,27 @@ class AcademicPeriodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $num_active = DB::table('academic_periods')
+                    ->where('status', 'active')
+                    ->count();
+
+        if($num_active > 0){
+            Session::flash('delete','Ya hay un período académico activo, para crear una nueva tiene que culminar la actual');
+            return back();
+        }
+
+        $this->validate(request(), [
+            'academic_period' => 'required|string|unique:academic_periods',
+        ]);
+        
+        $academic_period = new AcademicPeriod;
+        $academic_period->fill($request->all());
+
+        $academic_period->save();
+        Session::flash('save','Período académico  creando con éxito');
+        return back();
+
     }
 
     /**

@@ -23,6 +23,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function(){
 	Route::get('students/createRegular','StudentController@createRegular')->name('students.createRegular');
 	Route::resource('students','StudentController');
 	
+	Route::resource('academic_periods','AcademicPeriodController');
+	
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

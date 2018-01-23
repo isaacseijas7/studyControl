@@ -17,7 +17,7 @@ class CreateRepresentativesTable extends Migration
             $table->increments('id');
             $table->string('profession');
             $table->string('work_place');
-            $table->enum('relationship', ['mother', 'father', 'assistant']);
+            $table->enum('relationship', ['mother', 'father', 'auxiliary']);
             $table->integer('people_id')->unsigned();
             $table->timestamps();
 
