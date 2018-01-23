@@ -1,0 +1,12 @@
+php artisan serve // inicia el servidor de laravel
+
+php artisan migrate // migra las tablas a la DB
+
+
+
+
+database/migrations : aqui estan las migraciiones
+
+resources/view : vistas
+
+	nombre.blade.php
