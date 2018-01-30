@@ -26,8 +26,8 @@ class RepresentativeSeeder extends Seeder
 				'gender' => $gender,
 				'birthdate' => $faker->dateTimeBetween('-45 years', '-18 years')->format('Y-m-d'),
 				'domicile' => 'Lorem ipsum dolor sit amet.',
-				'phone_local' => rand(11111111111,99999999999),
-				'phone_movil' => rand(11111111111,99999999999),
+				'phone_local' => '02463564765',
+				'phone_movil' => '04123524890',
 				'created_at' => carbon::now(),
 				'updated_at' => carbon::now(),
 			]);

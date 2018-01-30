@@ -7,12 +7,10 @@
         }
         
         header {
-            position: fixed;
+            position: relative;
             top: -60px;
             left: 0px;
             right: 0px;
-            background-color: lightblue;
-            height: 50px;
         }
         
         footer {
@@ -20,7 +18,6 @@
             bottom: -60px;
             left: 0px;
             right: 0px;
-            background-color: lightblue;
             height: 50px;
         }
         
@@ -36,8 +33,24 @@
 
 <body>
     <header>
-    	<h2>Header</h2>
+    	<img src="assets/img/membrete3.png" style="width: 100%; margin-bottom: 40px;">
+    	<table style="width: 100%;">
+    		<tr>
+    			<td style="width: 100px;">
+			    	<img src="assets/img/logoEscuela.png" style="width: 100%;">
+    			</td>
+    			<td>
+			    	<p style="text-align: center; margin: auto;">
+			    		República Bolivariana de Venezuela<br>
+			    		Ministerio del Poder Popular para la Educación<br>
+			    		Unidad Educativa Escuela Bolivariana "Uverito"<br>
+			    	</p>
+    			</td>
+    			<td style="width: 120px;"> &nbsp; </td>
+    		</tr>
+    	</table>
     </header>
+  
     <footer>
     	<h4>Footer</h4>
     </footer>
@@ -47,13 +60,14 @@
     	<h2 style="text-align: center;">CONSTANCIA DE INSCRIPCIÓN</h2>
 
     	<hr>
-
+		
     	<p><b>C.I.:</b> {{ $student->people->identification }} - <b>Estudiante</b> {{ $student->people->fullName() }}</p>
 
 		
 		<p><b>PERÍODO:</b> {{ $student->inscriptions[0]->academic_period->academic_period }} - Inscripcion</p>
         <h2>Datos del estudiante</h2>
-        <table>
+
+        <table border="2" style="width: 100%">
             <tr>
                 <td>
                     <b>Estudiante</b>
@@ -96,12 +110,12 @@
             </tr>
         </table>
 
-        <hr>
+        
 
         @if ($student->mother !== null)
 		    
 	        <h2>Datos de la madre</h2>
-	        <table>
+	        <table border="2" style="width: 100%">
 	            <tr>
 	                <td>
 	                    <b>Madre</b>
@@ -149,7 +163,7 @@
 		@if ($student->father !== null)
 		    
 	        <h2>Datos del padre</h2>
-	        <table>
+	        <table border="2" style="width: 100%">
 	            <tr>
 	                <td>
 	                    <b>Padre</b>
@@ -190,14 +204,14 @@
 	                    {{ $student->father->people->age() }}
 	                </td>
 	            </tr>
-	        </table>
+	        </table><br></br>
 
 		@endif
 
 		@if ($student->auxiliary !== null)
 		    
 	        <h2>Datos del Representante</h2>
-	        <table>
+	        <table border="2" style="width: 100%">
 	            <tr>
 	                <td>
 	                    <b>Representante</b>

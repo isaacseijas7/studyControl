@@ -151,7 +151,7 @@ class InscriptionController extends Controller
             return back();
         }
         
-        return $student;
+        //return $student;
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadView('students.proof-of-registration', [
             'student' => $student,

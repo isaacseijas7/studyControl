@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 			'rol' => 'admin',
 			'remember_token' => '716iyu66e937egiy',
 			'created_at' => carbon::now(),
-			'updated_at' => carbon::now()
+			'updated_at' => carbon::now(),
 		]);
     }
 }
