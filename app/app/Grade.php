@@ -14,4 +14,10 @@ class Grade extends Model
     protected $fillable = [
         'grade'
     ];
+
+    public function inscription()
+    {
+        return $this->hasOne(Inscription::class);
+	}
+
 }

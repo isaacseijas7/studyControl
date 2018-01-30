@@ -14,4 +14,10 @@ class Section extends Model
     protected $fillable = [
         'section'
     ];
+
+    public function inscription()
+    {
+        return $this->hasOne(Inscription::class);
+	}
+
 }

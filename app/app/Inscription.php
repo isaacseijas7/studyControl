@@ -25,4 +25,14 @@ class Inscription extends Model
         return $this->belongsTo(AcademicPeriod::class);
     }
 
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
+
 }
