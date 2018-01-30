@@ -64,10 +64,7 @@
     @yield('scripts')
 
     <script type="text/javascript">
-        toastr.info('{{ config('app.name', 'Laravel') }}', 'Bienvenido {{ Auth::user()->name }}', {
-            closeButton: true,
-            progressBar: true,
-        });
+        
     </script>
 
 </body>

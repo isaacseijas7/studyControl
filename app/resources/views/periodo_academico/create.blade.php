@@ -9,6 +9,11 @@
                 Home
             </a>
         </li>
+        <li class="breadcrumb-item">
+            <a href="{{route('academic_periods.index')}}">
+                Lista Períodos académicos
+            </a>
+        </li>
         <li class="breadcrumb-item active">Crear Período académico</li>
     </ol>
 

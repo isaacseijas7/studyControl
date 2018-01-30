@@ -19,4 +19,19 @@ class Representative extends Model
 	{
 		return $this->belongsTo(People::class);
 	}
+
+    public function motherstudent() {
+        return $this->hasMany(Student::class, 'mother_id');
+    }
+
+    public function fatherstudent() {
+        return $this->hasMany(Student::class, 'father_id');
+    }
+
+    public function auxilistudentary() {
+        return $this->hasMany(Student::class, 'auxiliary_id');
+    }
+
+
+
 }

@@ -92,15 +92,17 @@ class StudentController extends Controller
             'birthdate' => 'required|string',
         ]);
 
-
-
         $people = new People();
         $people->fill($request->all());
 
         if ($people->age() >= 12) {
-            return back()->withErrors(['birthdate' => 'El estudiante es mayor de 12 años']);
+            
+            return back()->withErrors(['birthdate' => 'El estudiante es mayor de 12 años'])->withInput();
+
         }else if ($people->age() <= 6) {
-            return back()->withErrors(['birthdate' => 'El estudiante es menor de 6 años']);
+            
+            return back()->withErrors(['birthdate' => 'El estudiante es menor de 6 años'])->withInput();
+            
         }
 
         $people->save();
@@ -110,8 +112,11 @@ class StudentController extends Controller
         $student->people_id = $people->id;
         $student->save();
 
-        Session::flash('save','Estudiante registrado con éxito');
-        return back();
+        Session::flash('save','Estudiante registrado con éxito ya puede inscribir al estudiante');
+        
+        return redirect()->guest('/dashboard/students/inscribe/'.$student->id);
+
+        //return back();
     }
 
     public function inscribe(Request $request, Student $student)

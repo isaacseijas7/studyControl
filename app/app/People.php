@@ -42,7 +42,7 @@ class People extends Model
     {
         $birthdate = new Carbon($this->birthdate);
         $age =  $birthdate->age;
-        return $age;
+        return $age. ' años';
     }
 
     public function representative()

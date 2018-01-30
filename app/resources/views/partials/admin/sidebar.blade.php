@@ -52,6 +52,42 @@
                     </li>
                 </ul>
             </li>
+            
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    Profesores
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('teachers.index') }}"> 
+                            Lista Profesores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('teachers.create') }}"> 
+                            Registrar Profesor
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    Obreros
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('workers.index') }}"> 
+                            Lista Obreros
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('workers.create') }}"> 
+                            Registrar Obrero
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <!-- <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     Reportes

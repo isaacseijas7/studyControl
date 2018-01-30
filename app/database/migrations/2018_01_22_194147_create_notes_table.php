@@ -15,9 +15,9 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_lapse_note');
-            $table->string('first_second_note');
-            $table->string('first_third_note');
+            $table->string('first_lapse_note')->default('0.1');
+            $table->string('first_second_note')->default('0.1');
+            $table->string('first_third_note')->default('0.1');
             $table->integer('inscription_id')->unsigned();
             $table->timestamps();
 

@@ -15,4 +15,10 @@ class AcademicPeriod extends Model
     protected $fillable = [
         'academic_period', 'status', 'min_section', 'max_section',
     ];
+
+    public function inscription()
+    {
+        return $this->hasOne(Inscription::class);
+	}
+
 }

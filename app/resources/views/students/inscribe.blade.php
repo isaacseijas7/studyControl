@@ -37,7 +37,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2>Datos del Estudiante</h2>
+                                    <h2>Inscribir Estudiante {{ $student->fullName() }}</h2>
                                 </div>
                                 <div class="col-md-12">
                                     <table class="table">
@@ -162,7 +162,7 @@
     <script type="text/javascript">
 
         $(document).ready(function() {
-            $('.select2').select2();
+            $('.select2-multiple').select2();
         });
 
     </script>

@@ -15,9 +15,28 @@ class Student extends Model
         'diseases', 'people_id', 'mother_id', 'father_id', 'auxiliary_id',
     ];
 
-    public function people()
-	{
+    public function people() {
 		return $this->belongsTo(People::class);
 	}
+
+    public function inscriptions() {
+        return $this->hasMany(Inscription::class);
+    }
+
+    /*public function mother() {
+        return $this->belongsTo(People::class)->select(['id', 'mother_id']);
+    }*/
+
+    public function mother() {
+        return $this->belongsTo(Representative::class);
+    }
+
+    public function father() {
+        return $this->belongsTo(Representative::class);
+    }
+
+    public function auxiliary() {
+        return $this->belongsTo(Representative::class);
+    }
 
 }

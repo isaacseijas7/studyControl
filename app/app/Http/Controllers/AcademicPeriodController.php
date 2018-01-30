@@ -6,6 +6,8 @@ use App\AcademicPeriod;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use DataTables;
 
 class AcademicPeriodController extends Controller
 {
@@ -17,6 +19,27 @@ class AcademicPeriodController extends Controller
     public function index()
     {
         return view('periodo_academico.index');
+    }
+
+    public function dataTable()
+    {
+
+        return DataTables::of(AcademicPeriod::select('id', 'academic_period','status')
+                ->get())
+
+            ->editColumn('id', function($new){ return $new->id;})
+            ->editColumn('academic_period', function($new){ return $new->academic_period;})
+            ->editColumn('status', function($new){ return $new->status;})
+            ->addColumn('action', function($new){
+                    $buttons = "<div class='btn-group'>";
+                
+                        /*$buttons .= "<a href='". route('students.delete', $new->id) ."' role='button' class='btn btn-danger btn-sm delete' data-toggle='tooltip' data-placement='left' title='eliminar'><i class='fa fa-trash-o'></i></a>";*/
+
+                    $buttons .= "</div>";
+                    return $buttons;
+                })
+            ->make(true);
+
     }
 
     /**

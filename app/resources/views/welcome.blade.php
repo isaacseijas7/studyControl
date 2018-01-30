@@ -23,18 +23,48 @@
                 margin: 0;
             }
 
+            html, body{
+              height: 100%;
+            }
+            body { 
+                background-image: url('assets/img/background/background.jpg') ;
+                background-position: center center;
+                background-repeat:  no-repeat;
+                background-attachment: fixed;
+                background-size:  cover;
+                background-color: #999;
+              
+            }
+
+            div, body{
+              margin: 0;
+              padding: 0;
+              font-family: exo, sans-serif;
+              
+            }
+            .wrapper {
+              height: 100%; 
+              width: 100%; 
+            }
+
+            .message {
+              -webkit-box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              box-sizing: border-box;
+              width: 100%; 
+              height:45%;
+              bottom: 0; 
+              display: block;
+              position: absolute;
+              background-color: rgba(0,0,0,0.6);
+              color: #fff;
+              padding: 0.5em;
+            }
+
+
+
             .full-height {
                 height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
             }
 
             .top-right {
@@ -52,7 +82,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -61,13 +91,13 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+
+
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+
+        <div class="wrapper">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -77,12 +107,9 @@
                     @endif
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Sistema de Control Académico
-                </div>
-                <h4>{{ config('app.name', 'Laravel') }}</h4>
+            <div class="message">
+                <h1>Sistema de Control Académico</h1>    
+                <p>{{ config('app.name', 'Laravel') }}</p>
             </div>
         </div>
     </body>

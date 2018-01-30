@@ -37,7 +37,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function(){
 
 	//inscriptions
 	Route::resource('inscriptions','InscriptionController');
+	Route::get('proof-of-registration/{student}','InscriptionController@proofOfRegistration');
 
+
+	//Profesores
+	Route::get('teachers/dataTable', 'TeacherController@dataTable')->name("teachers.dataTable");
+	Route::resource('teachers','TeacherController');
+	Route::get('teachers/delete/{teacher}', 'TeacherController@destroy')->name('teachers.delete');
+
+
+	//Obreros
+	Route::get('workers/dataTable', 'WorkerController@dataTable')->name("workers.dataTable");
+	Route::resource('workers','WorkerController');
+	Route::get('workers/delete/{worker}', 'WorkerController@destroy')->name('workers.delete');
 
 	
 	

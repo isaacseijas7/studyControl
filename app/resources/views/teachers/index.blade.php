@@ -6,19 +6,19 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{url('/')}}">
-                Home
+                Inicio
             </a>
         </li>
-        <li class="breadcrumb-item active">Lista Períodos académicos</li>
+        <li class="breadcrumb-item active">Lista Profesores</li>
     </ol>
 
     <div class="container-fluid">
         <div class="animated fadeIn">
             <div class="card">
                 <div class="card-header">
-                    <i class="fa fa-edit"></i> Lista Períodos académicos
-                    <a class="btn btn-primary pull-right" href="{{route('academic_periods.create')}}">
-                        Crear Período académico
+                    <i class="fa fa-edit"></i> Lista Profesores
+                    <a class="btn btn-primary pull-right" href="{{ route('teachers.create') }}">
+                        Registrar Profesor
                     </a>
                 </div>
                 <div class="card-block">
@@ -27,11 +27,14 @@
                             @include('partials.mensajes')
                         </div>
                     </div>
-                    <table id="academic_periods" class="table table-striped table-bordered datatable">
+                    <table id="datatables-teachers" class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th>Período académico</th>
-                                <th>Status</th>
+                                <th>Profesor</th>
+                                <th>Cédula</th>
+                                <th>Dirección</th>
+                                <th>Teléfono movil</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,40 +42,36 @@
                     </table>
                 </div>
             </div>
-
         </div>
-
-
     </div>
 </main>
 @endsection
 
+
 @section('styles')
     <link href="{{ asset('assets/js/libs/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/js/libs/buttons.dataTables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('scripts')
     <script src="{{ asset('assets/js/libs/jquery.dataTables.min.js') }}"></script>
-
-
     <script src="{{ asset('assets/js/libs/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('assets/js/libs/sweetalert.min.js')}}"></script>
 
     <script type="text/javascript">
-
+        
         $(document).ready(function() {
-            table = $('#academic_periods').DataTable({
-
+            table = $('#datatables-teachers').DataTable({
                 "sDom": "<'row mb-1'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6 center'p>>",
                 renderer: 'bootstrap',
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ route('academic_periods.dataTable') }}",
+                "ajax": "{{ route('teachers.dataTable') }}",
                 "columns": [
-                    {"data": "academic_period",'name':'academic_period'},
-                    {"data": "status" ,'name':'status'},
-                    /*{"data": "action", "orderable" : false, "searchable": false}*/
+                    {"data": "ful_name",'name':'ful_name'},
+                    {"data": "identification" ,'name':'identification'},
+                    {"data": "domicile" ,'name':'domicile'},
+                    {"data": "phone_movil" ,'name':'phone_movil'},
+                    {"data": "action", "orderable" : false, "searchable": false}
                 ],
                 "language": {
                     "lengthMenu": "Ver _MENU_ registros por página",
@@ -87,7 +86,7 @@
                 }
             });
 
-            $('#academic_periods tbody').on('click', 'a.delete', function(e){
+            $('#datatables-teachers tbody').on('click', 'a.delete', function(e){
                 e.preventDefault();
                 var self = $(this);
                 swal({
