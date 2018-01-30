@@ -15,9 +15,8 @@ class CreateRepresentativesTable extends Migration
     {
         Schema::create('representatives', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('profession');
-            $table->string('work_place');
-            $table->enum('relationship', ['mother', 'father', 'auxiliary']);
+            $table->string('profession')->nullable();
+            $table->string('work_place')->nullable();
             $table->integer('people_id')->unsigned();
             $table->timestamps();
 

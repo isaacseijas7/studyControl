@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Materia extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'materia', 'grade_id',
+    ];
 }

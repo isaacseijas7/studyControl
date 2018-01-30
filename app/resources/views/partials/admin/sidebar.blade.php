@@ -14,52 +14,72 @@
                 Modulos
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('academic_periods.index')}}"><i class="icon-speedometer"></i> Período académico</a>
+                <a class="nav-link" href="{{route('academic_periods.index')}}">
+                    Período académico
+                </a>
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    Repesentantes
+                </a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('representatives.index') }}"> 
+                            Lista Repesentantes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('representatives.create') }}"> 
+                            Registrar Repesentante
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
                     Estudiantes
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('students.index') }}"><i class="icon-puzzle"></i> Listar Estudiantes</a>
+                        <a class="nav-link" href="{{ route('students.index') }}"> 
+                            Lista Estudiantes
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('students.createRegular') }}"><i class="icon-puzzle"></i> Inscripción Regular</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('students.create') }}"><i class="icon-puzzle"></i> Inscripción Nuevo</a>
+                        <a class="nav-link" href="{{ route('students.create') }}"> 
+                            Registrar Estudiante
+                        </a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i>
+            <!-- <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
                     Reportes
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-elink" href="#"><i class="icon-puzzle"></i> Constancia de studio</a>
+                        <a class="nav-elink" href="#"> Constancia de studio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> Planilla Inscripción</a>
+                        <a class="nav-link" href="#"> Planilla Inscripción</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> Boleta de Notas</a>
+                        <a class="nav-link" href="#"> Boleta de Notas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> Listado de Estudiantes</a>
+                        <a class="nav-link" href="#"> Listado de Estudiantes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> estudiantes Activos</a>
+                        <a class="nav-link" href="#"> estudiantes Activos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> estudiantes Pasivos</a>
+                        <a class="nav-link" href="#"> estudiantes Pasivos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="icon-puzzle"></i> Docentes</a>
+                        <a class="nav-link" href="#"> Docentes</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
         </ul>
     </nav>
