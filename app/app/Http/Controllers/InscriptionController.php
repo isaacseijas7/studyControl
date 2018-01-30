@@ -144,14 +144,14 @@ class InscriptionController extends Controller
         $student->load(['inscriptions' => function ($query) use ($num_active) {
             $query->where('id', $num_active[0]->id)->first();
         }]);
-        $student->load('inscriptions.academic_period');
+        $student->load('inscriptions.academic_period', 'inscriptions.grade', 'inscriptions.section');
 
         if($student->inscriptions->count() < 1){
             Session::flash('delete','Estudiante no esta inscrito en el período académico actual');
             return back();
         }
         
-        //return $student;
+        return $student;
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadView('students.proof-of-registration', [
             'student' => $student,
