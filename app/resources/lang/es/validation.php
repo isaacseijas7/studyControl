@@ -148,5 +148,6 @@ return [
 		'sub_category'      => 'sub categoria',
 		'name_page'      	=> 'nombre de página',
 		'parent_id'      	=> 'página padre',
+        'academic_period'   => 'Período académico',
     ],
 ];

@@ -24,6 +24,8 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/img/logoEscuela.png') }}">
 
+    @yield('styles')
+
 </head>
 <body class="app header-fixed aside-menu-fixed aside-menu-hidden">
 
@@ -42,18 +44,11 @@
         <a href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a> © {{ date('Y') }}
     </footer>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
     <!-- Bootstrap and necessary plugins -->
     <script src="{{ asset('assets/js/libs/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/libs/tether.min.js') }}"></script>
     <script src="{{ asset('assets/js/libs/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/libs/pace.min.js') }}"></script>
-
-
-    <!-- Plugins and scripts required by all views -->
-    <script src="{{ asset('assets/js/libs/Chart.min.js') }}"></script>
 
 
     <!-- GenesisUI main scripts -->
@@ -66,15 +61,10 @@
     <script src="{{ asset('assets/js/libs/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/libs/daterangepicker.js') }}"></script>
 
-    <!-- Custom scripts required by this view -->
-    <script src="{{ asset('assets/js/views/main.js') }}"></script>
-
+    @yield('scripts')
 
     <script type="text/javascript">
-        toastr.info('{{ config('app.name', 'Laravel') }}', 'Bienvenido {{ Auth::user()->name }}', {
-            closeButton: true,
-            progressBar: true,
-        });
+        
     </script>
 
 </body>

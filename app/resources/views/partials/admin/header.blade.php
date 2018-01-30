@@ -8,14 +8,14 @@
         </li>
 
         <li class="nav-item px-1">
-            <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+            <a class="nav-link" href="{{ route('home') }}">panel</a>
         </li>
-        <li class="nav-item px-1">
+        <!-- <li class="nav-item px-1">
             <a class="nav-link" href="#">Users</a>
         </li>
         <li class="nav-item px-1">
             <a class="nav-link" href="#">Settings</a>
-        </li>
+        </li> -->
     </ul>
 
     

@@ -19,8 +19,8 @@ class CreateStudentsTable extends Migration
             $table->string('diseases');// enfermedades
 
             $table->integer('people_id')->unsigned();
-            $table->integer('mother_id')->unsigned();
-            $table->integer('father_id')->unsigned();
+            $table->integer('mother_id')->unsigned()->nullable();
+            $table->integer('father_id')->unsigned()->nullable();
             $table->integer('auxiliary_id')->unsigned()->nullable();
             $table->timestamps();
 
