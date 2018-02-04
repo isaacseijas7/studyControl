@@ -45,7 +45,7 @@
                                             <tr>
                                                 <th>Estudiante</th>
                                                 <th>Cédula</th>
-                                                <th>Genero</th>
+                                                <th>Sexo</th>
                                                 <th>Fecha de nacimiento</th>
                                                 <th>Edad</th>
                                             </tr>
@@ -124,9 +124,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group {{ $errors->has('auxiliary_id') ? ' has-danger' : '' }}"">
-                                        {{ Form::label('auxiliary_id', 'Auxiliar', ['for' => 'auxiliary_id', 'class'=>'form-control-label']) }}
+                                        {{ Form::label('auxiliary_id', 'Representante', ['for' => 'auxiliary_id', 'class'=>'form-control-label']) }}
                                         
-                                        {!! Form::select('auxiliary_id', $representatives, null, ['class'=> 'form-control select2-multiple', 'id'=> 'auxiliary_id', 'placeholder' => 'Auxiliar']) !!}
+                                        {!! Form::select('auxiliary_id', $representatives, null, ['class'=> 'form-control select2-multiple', 'id'=> 'auxiliary_id', 'placeholder' => 'Representante']) !!}
 
                                         @if ($errors->has('auxiliary_id'))
                                             <span class="form-control-feedback">{{ $errors->first('auxiliary_id') }}</span>

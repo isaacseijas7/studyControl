@@ -1,0 +1,32 @@
+1 cd /var/www/html/studyControl/app / movernos a la carpeta del proyecto
+
+composer install
+
+php artisan migrate // crear las tablas de la DB
+
+php artisan db:seed // crea los registros por defacto
+
+php artisan serve // iniciar el server de laravel
+
+php artisan migrate:refres --seed // refresca la DB Y crea los registros por defacto
+
+
+
+
+---------------------- GIT -----------------------
+
+1) git fetch origin master // DESCARGA LAS REMAS DEL REPO REMOTO
+
+2) git status // MUESTA EL STATUS DEL PROYECTO
+
+3) git add // AGRAGA LOS CAMBIOS RELIZADOS
+
+4) git commit -m "comentario de faviola" // COMENTA LOS CAMBIOS RELIZADOS
+
+5) git push origin master // SUBBE LOS CAMBIOS RELIZADOS AL REPO REMOTO
+
+6) git pull origin IsaacJs // DESCARGA LOS CAMBIOS ECHOS POR ISAACJS
+
+7) git pull origin master DESCARGA LOS CAMBIOS ECHOS POR MASTER
+
+---------------------- GIT -----------------------

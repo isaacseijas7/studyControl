@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{url('/')}}">
-                Home
+                Inicio
             </a>
         </li>
         <li class="breadcrumb-item active">Dashboard</li>
@@ -14,7 +14,7 @@
 
     <div class="container-fluid">
         <div class="animated fadeIn">
-            <h2>crear regular estudiantes</h2>
+            <h2>Crear Estudiantes Regular</h2>
         </div>
 
 
