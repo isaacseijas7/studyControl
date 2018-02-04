@@ -52,6 +52,10 @@
 
 		
 		<p><b>PERÍODO:</b> {{ $student->inscriptions[0]->academic_period->academic_period }} - Inscripcion</p>
+
+		<p><b>GRADO Y SECCIÓN:</b> {{ $student->inscriptions[0]->grade->grade }} {{ $student->inscriptions[0]->section->section }}</p>
+
+
         <h2>Datos del estudiante</h2>
         <table>
             <tr>
