@@ -32,7 +32,7 @@
                             <tr>
                                 <th>Estudiante</th>
                                 <th>Cédula</th>
-                                <th>Genero</th>
+                                <th>Sexo</th>
                                 <th>Fecha de nacimiento</th>
                                 <th>Edad</th>
                                 <th>Opciones</th>
@@ -101,7 +101,7 @@
                     showCancelButton: true,
                     confirmButtonColor: "#d81b60",
                     confirmButtonText: "Si, eliminala!",
-                    cancelButtonText: "No, vuelve atrás!",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: true,
                     closeOnCancel: true
                 }, 

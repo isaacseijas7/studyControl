@@ -8,7 +8,7 @@
         </li>
 
         <li class="nav-item px-1">
-            <a class="nav-link" href="{{ route('home') }}">panel</a>
+            <a class="nav-link" href="{{ route('home') }}">Panel</a>
         </li>
         <!-- <li class="nav-item px-1">
             <a class="nav-link" href="#">Users</a>
@@ -38,12 +38,12 @@
                 <div class="dropdown-menu dropdown-menu-right">
 
                     <div class="dropdown-header text-center">
-                        <strong>Account</strong>
+                        <strong>Cuenta</strong>
                     </div>
                     <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
                         <i class="fa fa-lock"></i> 
                         Cerar sesión
                     </a>

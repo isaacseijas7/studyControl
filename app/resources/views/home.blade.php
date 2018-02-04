@@ -6,10 +6,10 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{url('/')}}">
-                Home
+                Inicio
             </a>
         </li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item active">Tablero</li>
     </ol>
 
     <div class="container-fluid">

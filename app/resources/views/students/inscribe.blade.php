@@ -45,7 +45,7 @@
                                             <tr>
                                                 <th>Estudiante</th>
                                                 <th>Cédula</th>
-                                                <th>Genero</th>
+                                                <th>Sexo</th>
                                                 <th>Fecha de nacimiento</th>
                                                 <th>Edad</th>
                                             </tr>

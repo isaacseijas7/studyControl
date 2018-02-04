@@ -6,7 +6,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{url('/')}}">
-                Home
+                Inicio
             </a>
         </li>
         <li class="breadcrumb-item active">Lista Períodos académicos</li>
@@ -30,8 +30,8 @@
                     <table id="academic_periods" class="table table-striped table-bordered datatable">
                         <thead>
                             <tr>
-                                <th>Período académico</th>
-                                <th>Status</th>
+                                <th>Período Académico</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,7 +97,7 @@
                     showCancelButton: true,
                     confirmButtonColor: "#d81b60",
                     confirmButtonText: "Si, eliminala!",
-                    cancelButtonText: "No, vuelve atrás!",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: true,
                     closeOnCancel: true
                 }, 
