@@ -13,6 +13,11 @@
             <li class="nav-title">
                 Modulos
             </li>
+
+            @if ((Auth::user()->rol == 'admin'))
+                
+            
+
             <li class="nav-item">
                 <a class="nav-link" href="{{route('academic_periods.index')}}">
                     Período académico
@@ -55,7 +60,7 @@
             
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    Profesores
+                    Personal
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
@@ -68,14 +73,6 @@
                             Registrar Profesor
                         </a>
                     </li>
-                </ul>
-            </li>
-
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    Obreros
-                </a>
-                <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('workers.index') }}"> 
                             Lista Obreros
@@ -88,35 +85,17 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    Reportes
-                </a>
-                <ul class="nav-dropdown-items">
-                    <li class="nav-item">
-                        <a class="nav-elink" href="#"> Constancia de studio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Planilla Inscripción</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Boleta de Notas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Listado de Estudiantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> estudiantes Activos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> estudiantes Pasivos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Docentes</a>
-                    </li>
-                </ul>
-            </li> -->
 
+            @elseif ((Auth::user()->rol == 'teachers'))
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('materias.index')}}">
+                        Lista materias
+                    </a>
+                </li>
+                    
+            @endif
+           
         </ul>
     </nav>
 </div>

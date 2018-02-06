@@ -15,9 +15,16 @@ class Grade extends Model
         'grade'
     ];
 
+    
+
     public function inscription()
     {
         return $this->hasOne(Inscription::class);
 	}
+
+    public function materia()
+    {
+        return $this->hasOne(Materia::class);
+    }
 
 }

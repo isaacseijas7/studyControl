@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\People;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class PeopleController extends Controller
 {
@@ -82,4 +84,26 @@ class PeopleController extends Controller
     {
         //
     }
+    
+    public function profile()
+    {
+        return view('profile');
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $this->validate(request(), [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = Auth::user();
+        
+        $user->password = bcrypt($request->get('password'));
+
+        $user->save();
+
+        Session::flash('save','Contraseña editada con éxito.');
+        return back();
+    }
+
 }

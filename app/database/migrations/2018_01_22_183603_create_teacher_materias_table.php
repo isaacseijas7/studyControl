@@ -19,7 +19,6 @@ class CreateTeacherMateriasTable extends Migration
             $table->integer('teacher_id')->unsigned();
             $table->integer('materia_id')->unsigned();
             $table->timestamps();
-
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
         });

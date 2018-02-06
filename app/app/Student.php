@@ -23,6 +23,8 @@ class Student extends Model
         return $this->hasMany(Inscription::class);
     }
 
+    
+
     /*public function mother() {
         return $this->belongsTo(People::class)->select(['id', 'mother_id']);
     }*/

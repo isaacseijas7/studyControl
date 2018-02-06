@@ -16,9 +16,13 @@ class CreateAcademicPeriodsTable extends Migration
         Schema::create('academic_periods', function (Blueprint $table) {
             $table->increments('id');
             $table->string('academic_period');
+            $table->string('director');
+            $table->string('ci_director');
             $table->enum('status', ['active', 'deactivated'])->default('active');
             $table->integer('min_section')->default(10);
             $table->integer('max_section')->default(20);
+            $table->date('date_int');
+            $table->date('date_fin');
             $table->timestamps();
         });
     }

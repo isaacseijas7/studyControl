@@ -26,4 +26,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * @return bool
+    */
+    public function admin()
+    {
+        return $this->rol === 'admin';
+    }
+    
+    /**
+    * @return bool
+    */
+    public function teacher()
+    {
+        return $this->rol === 'teachers';
+    }
+
+    /**
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+
+    public function persona()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
 }

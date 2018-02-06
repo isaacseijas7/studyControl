@@ -97,6 +97,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h3>Representantes</h3>
+                                    <a class="btn btn-primary pull-right" href="{{ route('representatives.create') }}">
+                                        Registrar Repesentante
+                                    </a>
                                 </div>
                             </div>
                             <div class="row">
@@ -104,7 +107,7 @@
                                     <div class="form-group {{ $errors->has('mother_id') ? ' has-danger' : '' }}"">
                                         {{ Form::label('mother_id', 'Madre', ['for' => 'mother_id', 'class'=>'form-control-label']) }}
                                         
-                                        {!! Form::select('mother_id', $representatives, null, ['class'=> 'form-control select2-multiple', 'id'=> 'mother_id', 'placeholder' => 'Madre']) !!}
+                                        {!! Form::select('mother_id', $representativesM, null, ['class'=> 'form-control select2-multiple', 'id'=> 'mother_id', 'placeholder' => 'Madre']) !!}
 
                                         @if ($errors->has('mother_id'))
                                             <span class="form-control-feedback">{{ $errors->first('mother_id') }}</span>
@@ -115,7 +118,7 @@
                                     <div class="form-group {{ $errors->has('father_id') ? ' has-danger' : '' }}"">
                                         {{ Form::label('father_id', 'Padre', ['for' => 'father_id', 'class'=>'form-control-label']) }}
                                         
-                                        {!! Form::select('father_id', $representatives, null, ['class'=> 'form-control select2-multiple', 'id'=> 'father_id', 'placeholder' => 'Padre']) !!}
+                                        {!! Form::select('father_id', $representativesF, null, ['class'=> 'form-control select2-multiple', 'id'=> 'father_id', 'placeholder' => 'Padre']) !!}
 
                                         @if ($errors->has('father_id'))
                                             <span class="form-control-feedback">{{ $errors->first('father_id') }}</span>
@@ -138,6 +141,8 @@
                             
                             <div class="card-footer">
                                 {!! Form::submit('Inscribir Estudiante '.$student->fullName(), ['class' => 'btn btn-md btn-primary', 'id' => 'btn_submit']) !!}
+
+                                <a href="#" onclick="history.go(-1);return false;" class="btn btn-md btn-warning">Regresar</a>
                             </div>
                         {!! Form::close() !!}
 

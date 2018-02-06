@@ -31,6 +31,8 @@
                         <thead>
                             <tr>
                                 <th>Período Académico</th>
+                                <th>Fecha de Inicío</th>
+                                <th>Fecha Final</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -71,6 +73,8 @@
                 "ajax": "{{ route('academic_periods.dataTable') }}",
                 "columns": [
                     {"data": "academic_period",'name':'academic_period'},
+                    {"data": "date_int" ,'name':'date_int'},
+                    {"data": "date_fin" ,'name':'date_fin'},
                     {"data": "status" ,'name':'status'},
                     /*{"data": "action", "orderable" : false, "searchable": false}*/
                 ],

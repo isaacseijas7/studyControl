@@ -85,7 +85,11 @@
                         "previous": "Anterior",
                         "next": "Proximo"
                     },
-                }
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
             });
 
             $('#datatables-representatives tbody').on('click', 'a.delete', function(e){
@@ -98,7 +102,7 @@
                     showCancelButton: true,
                     confirmButtonColor: "#d81b60",
                     confirmButtonText: "Si, eliminala!",
-                    cancelButtonText: "No, vuelve atrás!",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: true,
                     closeOnCancel: true
                 }, 

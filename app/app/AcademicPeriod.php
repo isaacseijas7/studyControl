@@ -13,7 +13,7 @@ class AcademicPeriod extends Model
      * @var array
      */
     protected $fillable = [
-        'academic_period', 'status', 'min_section', 'max_section',
+        'academic_period', 'status', 'min_section', 'max_section', 'date_int', 'date_fin',
     ];
 
     public function inscription()

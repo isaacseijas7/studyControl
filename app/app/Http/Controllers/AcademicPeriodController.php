@@ -24,11 +24,13 @@ class AcademicPeriodController extends Controller
     public function dataTable()
     {
 
-        return DataTables::of(AcademicPeriod::select('id', 'academic_period','status')
+        return DataTables::of(AcademicPeriod::select('id', 'academic_period', 'date_int', 'date_fin' ,'status')
                 ->get())
 
             ->editColumn('id', function($new){ return $new->id;})
             ->editColumn('academic_period', function($new){ return $new->academic_period;})
+            ->editColumn('date_int', function($new){ return $new->date_int;})
+            ->editColumn('date_fin', function($new){ return $new->date_fin;})
             ->editColumn('status', function($new){ return $new->status;})
             ->addColumn('action', function($new){
                     $buttons = "<div class='btn-group'>";
@@ -72,6 +74,8 @@ class AcademicPeriodController extends Controller
 
         $this->validate(request(), [
             'academic_period' => 'required|string|unique:academic_periods',
+            'date_int' => 'required',
+            'date_fin' => 'required',
         ]);
         
         $academic_period = new AcademicPeriod;

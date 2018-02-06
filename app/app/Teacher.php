@@ -12,12 +12,31 @@ class Teacher extends Model
      * @var array
      */
     protected $fillable = [
-        'people_id',
+        'people_id', 'user_id',
     ];
 
     public function people()
 	{
 		return $this->belongsTo(People::class);
 	}
+
+    public function materias(){
+        return $this->belongsToMany(Materia::class,'teacher_materias');
+    }
+
+    public function pluckMaterias()
+    {
+        
+        foreach ($this->materias as $key => $materia) {
+
+        }
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
 
 }

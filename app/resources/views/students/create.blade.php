@@ -96,7 +96,7 @@
                                     <div class="form-group {{ $errors->has('birthdate') ? ' has-danger' : '' }}"">
                                         {{ Form::label('birthdate', 'Fecha de nacimiento:', ['for' => 'birthdate', 'class'=>'control-label']) }}
 
-                                        {{ Form::date('birthdate', old('birthdate'), ['class' => 'form-control', 'id' => 'birthdate' , 'placeholder' => 'Ingrese fecha de nacimiento' ]) }}
+                                        {{ Form::text('birthdate', old('birthdate'), ['class' => 'form-control', 'id' => 'birthdate' , 'placeholder' => 'Ingrese fecha de nacimiento', 'data-date-end-date'=>'0d', 'data-date-disable-touch-keyboard'=>'false' ]) }}
                                         
                                         @if ($errors->has('birthdate'))
                                             <span class="form-control-feedback">{{ $errors->first('birthdate') }}</span>
@@ -122,6 +122,7 @@
                             
                             <div class="card-footer">
                                 {!! Form::submit('Registrar Estudiante', ['class' => 'btn btn-md btn-primary', 'id' => 'btn_submit']) !!}
+                                <a href="#" onclick="history.go(-1);return false;" class="btn btn-md btn-warning">Regresar</a>
                             </div>
                         {!! Form::close() !!}
 
@@ -132,4 +133,27 @@
 
     </div>
 </main>
+@endsection
+
+
+
+@section('styles')
+    <link href="{{ asset('assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
+
+@section('scripts')
+    <script src="{{ asset('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js') }}" type="text/javascript"></script>
+
+    <script>
+        
+        $('#birthdate').datepicker({
+            language: 'es',
+            autoclose: true,
+            format: 'yyyy/mm/dd',
+        });
+
+    </script>
+
 @endsection

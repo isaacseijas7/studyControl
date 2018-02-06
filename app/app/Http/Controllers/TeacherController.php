@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Teacher;
+use App\User;
+use App\Materia;
 use App\People;
 use Illuminate\Http\Request;
 use Session;
@@ -59,7 +61,12 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teachers.create');
+
+        $materias = Materia::orderBy('id', 'ASC')
+                ->get()
+                ->pluck('lavel_select', 'id');
+
+        return view('teachers.create')->with('materias', $materias);
     }
 
 
@@ -79,22 +86,32 @@ class TeacherController extends Controller
             'gender' => 'required|string',
             'birthdate' => 'required|string',
             'domicile' => 'required|string',
-            //'phone_local' => 'required|string',
+            'materia_id' => 'required|array',
             'phone_movil' => 'required|numeric',
-            //'profession' => 'required|string',
-            //'work_place' => 'required|string',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
         ]);
 
+        $user = new User();
+
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->rol = 'teachers';
+        $user->password = bcrypt($request->get('password'));
+
+        $user->save();
 
         $people = new People();
         $people->fill($request->all());
-
         $people->save();
 
         $teacher = new Teacher;
         $teacher->fill($request->all());
         $teacher->people_id = $people->id;
+        $teacher->user_id = $user->id;
         $teacher->save();
+
+        $teacher->materias()->sync($request->get('materia_id'));
 
         Session::flash('save','Profesor registrado con éxito');
         return back();
@@ -119,7 +136,14 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        return view('teachers.edit')->with(['teacher' => $teacher->people]);
+
+        $materias = Materia::orderBy('id', 'ASC')
+                ->get()
+                ->pluck('lavel_select', 'id');
+
+        $_materias = $teacher->materias->pluck('id');
+
+        return view('teachers.edit')->with(['teacher' => $teacher->people, 'materias' => $materias, '_materias' => $_materias]);
     }
 
     /**
@@ -138,6 +162,7 @@ class TeacherController extends Controller
             'gender' => 'required|string',
             'birthdate' => 'required|string',
             'domicile' => 'required|string',
+            'materia_id' => 'required|array',
             'phone_movil' => 'required|numeric',
         ]:[
             'name' => 'required|string',
@@ -146,6 +171,7 @@ class TeacherController extends Controller
             'gender' => 'required|string',
             'birthdate' => 'required|string',
             'domicile' => 'required|string',
+            'materia_id' => 'required|array',
             'phone_movil' => 'required|numeric',
         ];
 
@@ -156,6 +182,8 @@ class TeacherController extends Controller
 
         $teacher->fill($request->all());
         $teacher->save();
+
+        $teacher->materias()->sync($request->get('materia_id'));
 
         Session::flash('save','Profesor editado con éxito');
         return back();

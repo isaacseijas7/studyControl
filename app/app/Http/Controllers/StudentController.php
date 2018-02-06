@@ -22,13 +22,27 @@ class StudentController extends Controller
      */
     public function index()
     {
+
         return view('students.index');
     }
 
     public function dataTable()
     {
 
-        return DataTables::of(Student::select('id', 'people_id','mother_id', 'people_id')
+        $num_active = DB::table('academic_periods')
+                        ->where('status', 'active')
+                    ->get();
+
+        return DataTables::of(Student::orderBy('id', 'ASC')
+                ->with(['inscriptions' => function($query) use ($num_active) {
+
+                    if ($num_active->count()>0) {      
+                        $query->where('academic_period_id', $num_active[0]->id);
+                    }else {
+                        $query->where('academic_period_id', null);
+                    }
+
+                }])
                 ->get())
 
             ->editColumn('id', function($new){ return $new->id;})
@@ -36,14 +50,24 @@ class StudentController extends Controller
             ->editColumn('mother_id', function($new){ return $new->mother_id;})
             ->editColumn('people_id', function($new){ return $new->people_id;})
             ->addColumn('ful_name', function($new){ return $new->people->fullName();})
+            
+            ->editColumn('inscriptions', function($new){ return $new->inscriptions;})
+
             ->addColumn('identification', function($new){ return $new->people->identification;})
             ->addColumn('gender', function($new){ return $new->people->gender();})
             ->addColumn('birthdate', function($new){ return $new->people->birthdate;})
             ->addColumn('age', function($new){ return $new->people->age();})
             ->addColumn('action', function($new){
                     $buttons = "<div class='btn-group'>";
-                    
-                        $buttons .= "<a href='". route('students.inscribe', $new->id) ."' role='button' class='btn btn-success btn-sm edit' data-toggle='tooltip' data-placement='left' title='Inscribir estudiante'><i class='fa fa-university' ></i></a>";
+
+                        if ($new->inscriptions->count() <= 0) {
+
+                            $buttons .= "<a href='". route('students.inscribe', $new->id) ."' role='button' class='btn btn-success btn-sm edit' data-toggle='tooltip' data-placement='left' title='Inscribir estudiante'><i class='fa fa-university' ></i> </a>";
+                                
+                        }else{
+                            $buttons .= "<a target='_black' href='". route('students.proofOfRegistration', $new->id) ."' role='button' class='btn btn-success btn-sm edit' data-toggle='tooltip' data-placement='left' title='Descargar Constancia'><i class='fa fa-print' ></i> </a>";
+                        };
+
 
                         $buttons .= "<a href='". route('students.edit', $new->id) ."' role='button' class='btn btn-info btn-sm edit' data-toggle='tooltip' data-placement='left' title='Editar'><i class='fa fa-edit' ></i></a>";
 
@@ -122,11 +146,24 @@ class StudentController extends Controller
     public function inscribe(Request $request, Student $student)
     {
 
-        //Representative;
-        //Section;
-        //Grade;
         
         $representatives = Representative::orderBy('id', 'ASC')
+                ->with('people')
+                ->get()
+                ->pluck('people.lavel_select', 'id');
+
+        $representativesM = Representative::orderBy('id', 'ASC')
+                ->whereHas('people' , function ($query) {
+                    $query->where('gender', "Female");
+                })
+                ->with('people')
+                ->get()
+                ->pluck('people.lavel_select', 'id');
+
+        $representativesF = Representative::orderBy('id', 'ASC')
+                ->whereHas('people' , function ($query) {
+                    $query->where('gender', "Male");
+                })
                 ->with('people')
                 ->get()
                 ->pluck('people.lavel_select', 'id');
@@ -138,6 +175,8 @@ class StudentController extends Controller
         return view('students.inscribe')->with([
                 'student' => $student->people,
                 'representatives' => $representatives,
+                'representativesM' => $representativesM,
+                'representativesF' => $representativesF,
                 'grades' => $grades,
                 'sections' => $sections,
             ]);

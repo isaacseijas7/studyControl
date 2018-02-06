@@ -96,7 +96,7 @@
                     showCancelButton: true,
                     confirmButtonColor: "#d81b60",
                     confirmButtonText: "Si, eliminala!",
-                    cancelButtonText: "No, vuelve atrás!",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: true,
                     closeOnCancel: true
                 }, 

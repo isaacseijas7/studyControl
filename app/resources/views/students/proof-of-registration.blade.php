@@ -46,13 +46,16 @@
 			    		Unidad Educativa Escuela Bolivariana "Uverito"<br>
 			    	</p>
     			</td>
-    			<td style="width: 120px;"> &nbsp; </td>
+    			<td style="width: 200px; text-align: center;">
+    				<b>Fecha de inscripción</b> <br>
+					{{ explode(" ", $student->inscriptions[0]->created_at)[0] }}
+    			</td>
     		</tr>
     	</table>
     </header>
   
-    <footer>
-    	<h4>Footer</h4>
+    <footer style="text-align: center;">
+    	<p>Fecha de impresion {{ date('Y-m-d') }}</p>
     </footer>
     <main>
 
@@ -259,6 +262,21 @@
 	        </table>
 
 		@endif
+
+
+		<div style="text-align: center;">
+			------------------------------------------ <br>
+			{{$student->inscriptions[0]->director}} <br> {{$student->inscriptions[0]->ci_director}} <br>
+			Firma Director:
+
+		</div>
+		<br>
+		<div style="text-align: center;">
+			
+			------------------------------------------ <br>
+			Firma Reprecentante:
+
+		</div>
 
 
 

@@ -20,36 +20,47 @@ Auth::routes();
 //Rutas administración
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function(){
 
-	Route::get('academic_periods/dataTable', 'AcademicPeriodController@dataTable')->name("academic_periods.dataTable");
-	Route::resource('academic_periods','AcademicPeriodController');
+	Route::group( ['middleware' => ['admin']], function (){
+		
+		Route::get('academic_periods/dataTable', 'AcademicPeriodController@dataTable')->name("academic_periods.dataTable");
+		Route::resource('academic_periods','AcademicPeriodController');
+		
+		Route::get('representatives/dataTable', 'RepresentativeController@dataTable')->name("representatives.dataTable");
+		Route::resource('representatives','RepresentativeController');
+		Route::get('representatives/delete/{representative}', 'RepresentativeController@destroy')->name('representatives.delete');
+		
+		Route::get('students/dataTable', 'StudentController@dataTable')->name("students.dataTable");
+		Route::resource('students','StudentController');
+		Route::get('students/inscribe/{student}', 'StudentController@inscribe')->name('students.inscribe');
+		Route::get('students/delete/{student}', 'StudentController@destroy')->name('students.delete');
 	
+		//inscriptions
+		Route::resource('inscriptions','InscriptionController');
+		Route::get('proof-of-registration/{student}','InscriptionController@proofOfRegistration')->name('students.proofOfRegistration');
 
-	Route::get('representatives/dataTable', 'RepresentativeController@dataTable')->name("representatives.dataTable");
-	Route::resource('representatives','RepresentativeController');
-	Route::get('representatives/delete/{representative}', 'RepresentativeController@destroy')->name('representatives.delete');
-	
+		//Profesores
+		Route::get('teachers/dataTable', 'TeacherController@dataTable')->name("teachers.dataTable");
+		Route::resource('teachers','TeacherController');
+		Route::get('teachers/delete/{teacher}', 'TeacherController@destroy')->name('teachers.delete');
+		
+		//Obreros
+		Route::get('workers/dataTable', 'WorkerController@dataTable')->name("workers.dataTable");
+		Route::resource('workers','WorkerController');
+		Route::get('workers/delete/{worker}', 'WorkerController@destroy')->name('workers.delete');
 
-	Route::get('students/dataTable', 'StudentController@dataTable')->name("students.dataTable");
-	Route::resource('students','StudentController');
-	Route::get('students/inscribe/{student}', 'StudentController@inscribe')->name('students.inscribe');
-	Route::get('students/delete/{student}', 'StudentController@destroy')->name('students.delete');
+	});
 
+	Route::group( [ 'prefix' => 'teacher', 'middleware' => ['teacher']], function (){
 
-	//inscriptions
-	Route::resource('inscriptions','InscriptionController');
-	Route::get('proof-of-registration/{student}','InscriptionController@proofOfRegistration');
+		Route::get('materias/dataTableMy', 'MateriaController@dataTable')->name("materias.dataTableMy");
+		Route::resource('materias','MateriaController');
 
-
-	//Profesores
-	Route::get('teachers/dataTable', 'TeacherController@dataTable')->name("teachers.dataTable");
-	Route::resource('teachers','TeacherController');
-	Route::get('teachers/delete/{teacher}', 'TeacherController@destroy')->name('teachers.delete');
+	});
 
 
-	//Obreros
-	Route::get('workers/dataTable', 'WorkerController@dataTable')->name("workers.dataTable");
-	Route::resource('workers','WorkerController');
-	Route::get('workers/delete/{worker}', 'WorkerController@destroy')->name('workers.delete');
+	//profile
+	Route::get('/profile', 'PeopleController@profile')->name('profile');
+	Route::post('/profile', 'PeopleController@profileUpdate')->name('profile.update');
 
 	
 	
